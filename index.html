@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>keyboard</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main id="keyboard"></main>
+
+</body>
+<script>
+    function tag(tagname) {
+        return document.createElement(tagname);
+    }
+    function getClass(className) {
+        return document.getElementsByClassName(className);
+    }
+    var keys = {
+        '0': { 0: 'q', 1: 'w', 2: 'e', 3: 'r', 4: 't', 5: 'y', 6: 'u', 7: 'i', 8: 'o', 9: 'p', length: 10 },
+        '1': { 0: 'a', 1: 's', 2: 'd', 3: 'f', 4: 'g', 5: 'h', 6: 'j', 7: 'k', 8: 'l', length: 9 },
+        '2': { 0: 'z', 1: 'x', 2: 'c', 3: 'v', 4: 'b', 5: 'n', 6: 'm', length: 7 },
+        'length': 3
+    }
+    var hash = {
+        'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'twitter.com', 'y': 'youtube.com', 'u': 'ubuntu.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+    }
+    var hashInLocalStorage = JSON.parse(localStorage.getItem('newHash') || 'null');
+    if(hashInLocalStorage) {
+        hash = hashInLocalStorage;
+    }
+    for(var index = 0;index < keys['length'];index = index + 1){
+        var row = tag('div');
+        row.className = 'row';
+        var kbds = keys[index];
+        for(var index2 = 0;index2 < kbds['length'];index2 = index2 + 1){
+            var kbd = tag('kbd');
+            var button = tag('button');
+            button.className = 'btn';
+            button.textContent = 'E';
+            button.id = kbds[index2];
+            Edit(button);
+            kbd.textContent = kbds[index2];
+            kbd.appendChild(button)
+            row.appendChild(kbd);
+        }
+        keyboard.appendChild(row);
+    }
+    document.onkeypress = function(key){
+        var web = key['key']
+        // location.href = 'https://' + hash[web];
+        window.open('http://' + hash[web],'_blank')
+    }
+    function Edit(item) {
+        item.onclick = function() {
+        var newWeb = prompt('请输入一个新的网址:');
+        var key = item.id;
+        hash[key] = newWeb;
+        localStorage.setItem('newHash',JSON.stringify(hash))
+        }
+    }
+
+</script>
+
+</html>

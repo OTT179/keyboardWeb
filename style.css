@@ -1,0 +1,23 @@
+#keyboard {
+    text-align: center;
+}
+#keyboard div.row {
+}
+#keyboard div.row kbd {
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid red;
+    width: 4em;
+    height: 4em;
+    line-height: 4em;
+    display: inline-block;
+    text-transform: uppercase;
+    position: relative;
+}
+#keyboard div.row kbd button {
+    font-size: 10px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+
+}
