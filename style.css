@@ -1,23 +1,54 @@
+*{padding:0;margin:0;}
+body{
+    background: gray url("./img/bg.jpg") no-repeat center center;
+    background-size: cover;
+}
+main{text-align: center; display: flex; justify-content: center; align-items: center; height: 100vh; }
 #keyboard {
     text-align: center;
+    background-color: rgba(48, 52, 55, 0.65);   
+    padding: 30px;
+    width: 800px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 10px 3px rgba(0,0,0,0.28);
 }
 #keyboard div.row {
+    margin-bottom: 20px;
 }
 #keyboard div.row kbd {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    border: 1px solid red;
-    width: 4em;
-    height: 4em;
-    line-height: 4em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #84DAFE;
+    text-shadow: 0px 0px 29px rgba(132, 218, 254, 1);
+    background: #383C3F;
+    width: 70px;
+    height: 80px;
+    margin-left: 10px;
+    border-radius: 15px;
+    line-height: 70px;
     display: inline-block;
+    box-shadow: 0px 6px 13px 3px rgba(0,0,0,0.28);
     text-transform: uppercase;
     position: relative;
+}
+#keyboard div.row kbd:first-child {
+    margin-left: 0;
 }
 #keyboard div.row kbd button {
     font-size: 10px;
     position: absolute;
     right: 3px;
     top: 3px;
-
+    visibility: hidden;
+}
+#keyboard div.row kbd:hover button {
+    visibility: visible;
+}
+#keyboard div.row kbd img {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    width: 20px;
+    height: 20px;
 }
